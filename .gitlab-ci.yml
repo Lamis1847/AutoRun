@@ -33,16 +33,3 @@ test:
       - $CI_PROJECT_DIR/coverage
     reports:
       junit: report.xml
-
-build:
-  stage: test
-  image: "cirrusci/flutter:1.22.5"
-  before_script:
-    - pub global activate junitreport
-    - export PATH="$PATH:$HOME/.pub-cache/bin"
-  script:
-    - flutter build apk --release
-  artifacts:
-    name: apk
-    paths:
-      - $CI_PROJECT_DIR/build
