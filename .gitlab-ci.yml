@@ -36,7 +36,7 @@ test:
 
 android:release:
   stage: build
-  image: "fischerscode/flutter"
+  image: "matspfeiffer/flutter:latest"
   before_script:
     - cd flutter_app
   script:
