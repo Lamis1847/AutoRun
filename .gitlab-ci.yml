@@ -36,6 +36,7 @@ test:
 
 android:release:
   stage: build
+  image: "cirrusci/flutter:1.22.5"
   before_script:
     - cd flutter_app
     - flutter packages get
