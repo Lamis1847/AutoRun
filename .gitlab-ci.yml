@@ -39,8 +39,6 @@ android:release:
   image: "fischerscode/flutter"
   before_script:
     - cd flutter_app
-    - flutter packages get
-    - flutter clean
   script:
     - flutter doctor --android-licenses
     - flutter build apk --release
