@@ -34,15 +34,19 @@ test:
     reports:
       junit: report.xml
 
-android:release:
+
+build:apk:
   stage: build
-  image: "matspfeiffer/flutter:latest"
-  before_script:
-    - cd flutter_app
+  image: jhbez/flutter-build-apk
   script:
-    - flutter doctor --android-licenses
-    - flutter build apk --release
+    - flutter build apk
   artifacts:
     paths:
-      - "**/**/**/**/**/**/*.apk"
-    expire_in: 1 day
+     - build/app/outputs/apk
+build:bundle:
+  stage: build
+  script:
+    - flutter build appbundle
+  artifacts:
+    paths:
+      - build/app/outputs/bundle
