@@ -39,8 +39,9 @@ build:apk:
   stage: build
   image: ubuntu
   before_script:
-    - sudo apt update && sudo apt install android-sdk
-    - git clone https://github.com/flutter/flutter.git
+    - apt update && apt install android-sdk
+    - curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.10.3-stable.tar.xz --output flutter.tar
+    - tar xf flutter.tar
     - export PATH="$PATH:`pwd`/flutter/bin"
   script:
     - flutter build apk
