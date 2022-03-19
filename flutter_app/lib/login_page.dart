@@ -39,20 +39,20 @@ class LoginPage extends StatelessWidget {
                 delay: 1000,
                 child: Container(
                   height: 150,
-                  child: Image.asset('images/WelcomeBack.png'),
+                  child: Image.asset('images/Re-bienvenue.png'),
                 ),
               ),
                   SizedBox(height: 20),
-                   Align(
-                  alignment: Alignment.centerLeft,),
+                   
+                  
                   DelayedAnimation(
                     delay: 2500,
                     child: Text(
-                      "Enter your credentials to continue.",
+                      "Pour continuer, Entrez votre email et mot de passe.",
                       style: TextStyle(
                       fontFamily: 'NexaXRegular',
                       color: Colors.grey[400],
-                      fontSize: 20,
+                      fontSize: 16,
                       ),
                     ),
                   ),
@@ -100,12 +100,12 @@ class LoginPage extends StatelessWidget {
                         ),
                   primary: d_blue,
                   padding: EdgeInsets.symmetric(
-                    horizontal: 125,
+                    horizontal: 70,
                     vertical: 13,
                   ),
                 ),
                 child: Text(
-                  'Sign In',
+                  'Se connecter',
                  style: TextStyle(
                               fontFamily: 'NexaXRegular',
                               color: Colors.white,
@@ -123,29 +123,7 @@ class LoginPage extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 90),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 35),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: DelayedAnimation(
-                    delay: 6500,
-                    child: Text(
-                      "SKIP",
-                      style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+           SizedBox(height: 35), 
           ],
         ),
       ),
@@ -179,11 +157,11 @@ class _LoginFormState extends State<LoginForm> {
                   color: Colors.grey[400],
                    
                 ),
-                hintText: 'Enter valid email id as abc@gmail.com'
+                hintText: 'Entrer un email id valide par exemple abc@gmail.com'
               ),
               validator: MultiValidator([
-        RequiredValidator(errorText: "* Required"),
-        EmailValidator(errorText: "Enter valid email id"),
+        RequiredValidator(errorText: "* Obligatoire"),
+        EmailValidator(errorText: "Entrer un email id valide"),
       ])
             ),
           ),
@@ -196,7 +174,7 @@ class _LoginFormState extends State<LoginForm> {
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
-                labelText: 'Password',
+                labelText: 'Mot de passe',
                 prefixIcon: Icon(ProjectIcons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -212,10 +190,10 @@ class _LoginFormState extends State<LoginForm> {
               ),
               
              validator: MultiValidator([
-        RequiredValidator(errorText: "* Required"),
+        RequiredValidator(errorText: "* Obligatoire"),
         MinLengthValidator(6,
-            errorText: "Password should be atleast 6 characters"),
-        MaxLengthValidator(15,errorText:"Password should not be greater than 15 characters")
+            errorText: "Le mot de passe doit contenir au moins 6 characteres"),
+        MaxLengthValidator(15,errorText:"Le mot de passe ne doit pas contenir plus de 15 characteres")
       ])
             ),
           ),

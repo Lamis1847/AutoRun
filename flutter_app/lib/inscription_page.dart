@@ -1,12 +1,8 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/icons/icons.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutterapp/login_page.dart';
 import 'package:flutterapp/main.dart';
 import 'package:flutterapp/delayed_animation.dart';
-import 'package:flutterapp/selfie_page.dart';
+import 'package:flutterapp/take_selfie.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class InscriptionPage extends StatelessWidget {
@@ -30,23 +26,42 @@ class InscriptionPage extends StatelessWidget {
       
       body: SingleChildScrollView(
         child: Column(
-          
+           
           children: [
-            Align(
-                  alignment: Alignment.centerLeft,),
-            DelayedAnimation(
+            
+             DelayedAnimation(
               delay: 100,
+              
+              child: Text(  
+                "C'est parti.",
+                 
+                style: TextStyle(
+                  fontFamily: 'NexaXBold',
+                  color: d_blue,
+                  fontSize: 32,
+                ),
+              ),
+               
+            ),
+            
+            SizedBox(height: 25),
+            DelayedAnimation(
+              delay: 250,
+               child: Padding(
+                padding: EdgeInsets.only(left: 30, right: 30),
               child: Text(
-                "Let's get started",
+                "Remplir les informations nécessaires pour l'inscription.",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'NexaXRegular',
                   color: Color.fromRGBO(112, 112, 112,100),
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
+               ),
             ),
             
-            SizedBox(height: 35),
+            SizedBox(height: 50),
             LoginForm(),
             SizedBox(height: 100),
             
@@ -76,14 +91,14 @@ class _LoginFormState extends State<LoginForm> {
             delay: 500,
             child: TextFormField(
               decoration: InputDecoration(
-                labelText: 'First Name',
+                labelText: 'Nom',
                 prefixIcon: Icon(ProjectIcons.user),
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
               ),
               validator: MultiValidator([
-            RequiredValidator(errorText: "* Required"),])
+            RequiredValidator(errorText: "* Obligatoire"),])
             ),
           ),
           SizedBox(height: 30),
@@ -91,14 +106,14 @@ class _LoginFormState extends State<LoginForm> {
             delay: 1500,
             child: TextFormField(
               decoration: InputDecoration(
-                labelText: 'Last Name',
+                labelText: 'Prénom',
                 prefixIcon: Icon(ProjectIcons.user),
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
               ),
               validator: MultiValidator([
-            RequiredValidator(errorText: "* Required"),])
+            RequiredValidator(errorText: "* Obligatoire"),])
             ),
           ),
           SizedBox(height: 30),
@@ -113,8 +128,8 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               validator: MultiValidator([
-        RequiredValidator(errorText: "* Required"),
-        EmailValidator(errorText: "Enter valid email id"),
+        RequiredValidator(errorText: "* Obligatoire"),
+        EmailValidator(errorText: "Entrer un email id valide"),
       ])
             ),
           ),
@@ -123,14 +138,14 @@ class _LoginFormState extends State<LoginForm> {
             delay: 3500,
             child: TextFormField(
               decoration: InputDecoration(
-                labelText: 'Phone number',
+                labelText: 'N° téléphone',
                 prefixIcon: Icon(ProjectIcons.call_incoming),
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
               ),
               validator: MultiValidator([
-            RequiredValidator(errorText: "* Required"),])
+            RequiredValidator(errorText: "* Obligatoire"),])
             ),
           ),
           SizedBox(height: 30),
@@ -142,7 +157,7 @@ class _LoginFormState extends State<LoginForm> {
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
-                labelText: 'Password',
+                labelText: 'Mot de passe',
                 prefixIcon: Icon(ProjectIcons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -157,10 +172,10 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
             validator: MultiValidator([
-            RequiredValidator(errorText: "* Required"),
+            RequiredValidator(errorText: "* Obligatoire"),
             MinLengthValidator(6,
-                errorText: "Password should be atleast 6 characters"),
-            MaxLengthValidator(15,errorText:"Password should not be greater than 15 characters")
+                errorText: "Le mot de passe doit contenir au moins 6 characteres"),
+            MaxLengthValidator(15,errorText:"Le mot de passe ne doit pas contenir plus de 15 characteres")
             ])
             ),
           ),
@@ -173,7 +188,7 @@ class _LoginFormState extends State<LoginForm> {
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
                 ),
-                labelText: 'Confirmation password',
+                labelText: 'Confirmation du mot de passe',
                 prefixIcon: Icon(ProjectIcons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -189,7 +204,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               validator: MultiValidator([
-            RequiredValidator(errorText: "* Required"),
+            RequiredValidator(errorText: "* Obligatoire"),
             ])
             ),
           ),
@@ -209,7 +224,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 child: Text(
-                  'Continue',
+                  'Continuer',
                  style: TextStyle(
                               fontFamily: 'NexaBold',
                               color: Colors.white,
@@ -222,7 +237,7 @@ class _LoginFormState extends State<LoginForm> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CameraExampleHome(),
+                      builder: (context) => TakeSelfie(),
                     ),
                   );
                 },

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutterapp/inscription_page.dart';
 import 'package:flutterapp/main.dart';
 import 'package:flutterapp/delayed_animation.dart';
 import 'package:flutterapp/login_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 
 class WelcomePage extends StatelessWidget {
@@ -21,23 +20,22 @@ class WelcomePage extends StatelessWidget {
           
           child: Column(
             children: [
-              Align(
-                  alignment: Alignment.centerLeft,),
+              
               SizedBox(height: 5),
              DelayedAnimation(
                 delay: 500,
                 child: Container(
                   height: 170,
-                  child: Image.asset('images/Welcome.png'),
+                  child: Image.asset('images/Bienvenue.png'),
                 ),
               ),
                  
-            SizedBox(height: 10),
+            SizedBox(height: 7),
               DelayedAnimation(
               delay: 700,
               child: Text(
-                "Welcome to our application",
-                textAlign: TextAlign.left,
+                "Bienvenue dans AutoRun",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'NexaXRegular',
                   color: Color.fromRGBO(112, 112, 112,100),
@@ -92,7 +90,7 @@ class WelcomePage extends StatelessWidget {
                           SizedBox(width: 10),
                           
                           Text(
-                            'Sign up',
+                            "S'inscrire",
                             style: TextStyle(
                               fontFamily: 'NexaXRegular',
                               color: Colors.white,
@@ -126,7 +124,7 @@ class WelcomePage extends StatelessWidget {
                         children: [
                           SizedBox(width: 10),
                           Text(
-                            'Sign in',
+                            'Se connecter',
                              style: TextStyle(
                               fontFamily: 'NexaXRegular',
                               color: d_blue,
