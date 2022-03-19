@@ -43,6 +43,7 @@ build:apk:
     - tar xf flutter.tar
     - export PATH="$PATH:`pwd`/flutter/bin"
   script:
+    - cd flutter_app
     - flutter build apk
   artifacts:
     paths:
