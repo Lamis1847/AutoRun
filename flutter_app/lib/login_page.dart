@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutterapp/main.dart';
 import 'package:flutterapp/icons/icons.dart';
 import 'package:flutterapp/delayed_animation.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -164,25 +165,32 @@ class _LoginFormState extends State<LoginForm> {
       margin: EdgeInsets.symmetric(
         horizontal: 30,
       ),
+      
       child: Column(
         
         children: [
           DelayedAnimation(
             delay: 3500,
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Email',
                 prefixIcon: Icon(ProjectIcons.envelope),
                 labelStyle: TextStyle(
                   color: Colors.grey[400],
+                   
                 ),
+                hintText: 'Enter valid email id as abc@gmail.com'
               ),
+              validator: MultiValidator([
+        RequiredValidator(errorText: "* Required"),
+        EmailValidator(errorText: "Enter valid email id"),
+      ])
             ),
           ),
           SizedBox(height: 30),
           DelayedAnimation(
             delay: 4500,
-            child: TextField(
+            child: TextFormField(
               obscureText: _obscureText,
               decoration: InputDecoration(
                 labelStyle: TextStyle(
@@ -202,6 +210,13 @@ class _LoginFormState extends State<LoginForm> {
                   },
                 ),
               ),
+              
+             validator: MultiValidator([
+        RequiredValidator(errorText: "* Required"),
+        MinLengthValidator(6,
+            errorText: "Password should be atleast 6 characters"),
+        MaxLengthValidator(15,errorText:"Password should not be greater than 15 characters")
+      ])
             ),
           ),
         ],
