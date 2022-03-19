@@ -37,7 +37,11 @@ test:
 
 build:apk:
   stage: build
-  image: jhbez/flutter-build-apk
+  image: ubuntu
+  before_script:
+    - sudo apt update && sudo apt install android-sdk
+    - git clone https://github.com/flutter/flutter.git
+    - export PATH="$PATH:`pwd`/flutter/bin"
   script:
     - flutter build apk
   artifacts:
