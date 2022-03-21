@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutterapp/main.dart';
 import 'package:flutterapp/icons/icons.dart';
 import 'package:flutterapp/delayed_animation.dart';
