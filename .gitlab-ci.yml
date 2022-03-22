@@ -47,4 +47,4 @@ build:apk:
     - flutter build apk --no-sound-null-safety
   artifacts:
     paths:
-     - build/app/outputs/flutter-apk/*
+     - build/app/outputs/flutter-apk/app-release.apk
