@@ -1,10 +1,11 @@
+import 'package:AutoRun/joindre_permis.dart';
 import 'package:flutter/material.dart';
 import 'package:AutoRun/main.dart';
 import 'package:AutoRun/delayed_animation.dart';
 import 'package:AutoRun/selfie_page.dart' as selfi;
 
-class TakeSelfie extends StatelessWidget {
-  const TakeSelfie({Key? key}) : super(key: key);
+class ScanPage extends StatelessWidget {
+  const ScanPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class TakeSelfie extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 40,
+            vertical: 30,
             horizontal: 30,
           ),
           child: Column(
@@ -36,23 +37,28 @@ class TakeSelfie extends StatelessWidget {
                 alignment: Alignment.centerLeft,
               ),
               const SizedBox(height: 5),
-              DelayedAnimation(
-                delay: 500,
-                child: SizedBox(
-                  height: 50,
-                  child: Image.asset('images/Prendre un selfie.png'),
+             const DelayedAnimation(
+                delay: 700,
+                child: Text(
+                  "Joindre votre pièce d'identité",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: 'NexaXBold',
+                    color: d_blue,
+                    fontSize: 32,
+                  ),
                 ),
               ),
               const SizedBox(height: 25),
               const DelayedAnimation(
                 delay: 700,
                 child: Text(
-                  "Cliquer sur le bouton pour prendre un selfie",
+                  "Complétez votre inscription en toute sécurité avec un scan de votre permis de conduite.",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontFamily: 'NexaXRegular',
                     color: Color.fromRGBO(112, 112, 112, 100),
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -61,10 +67,10 @@ class TakeSelfie extends StatelessWidget {
                 delay: 1000,
                 child: SizedBox(
                   height: 170,
-                  child: Image.asset('images/Groupe.png'),
+                  child: Image.asset('images/Card.png'),
                 ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 50),
               DelayedAnimation(
                 delay: 1000,
                 child: Container(
@@ -81,7 +87,7 @@ class TakeSelfie extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => pageCamera,
+                              builder: (context) => GalleryPage(),
                             ),
                           );
                         },
@@ -100,11 +106,11 @@ class TakeSelfie extends StatelessWidget {
                           children: const [
                             SizedBox(width: 10),
                             Text(
-                              "Prendre un selfie",
+                              "Joindre une photo",
                               style: TextStyle(
                                 fontFamily: 'NexaXRegular',
                                 color: Colors.white,
-                                fontSize: 22,
+                                fontSize: 18,
                               ),
                             )
                           ],

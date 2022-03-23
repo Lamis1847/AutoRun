@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(0),
         leading: IconButton(
           icon: Icon(
-            Icons.close,
+           Icons.arrow_back,
             color: Colors.black,
             size: 30,
           ),
@@ -39,11 +39,11 @@ class LoginPage extends StatelessWidget {
                   DelayedAnimation(
                     delay: 1000,
                     child: Container(
-                      height: 150,
+                      height: 50,
                       child: Image.asset('images/Re-bienvenue.png'),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 25),
                   DelayedAnimation(
                     delay: 2500,
                     child: Text(
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 35),
+            SizedBox(height: 10),
             LoginForm(),
           ],
         ),
@@ -159,7 +159,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
             ),
-            SizedBox(height: 125),
+            SizedBox(height: 60),
             DelayedAnimation(
               delay: 5500,
               child: ElevatedButton(

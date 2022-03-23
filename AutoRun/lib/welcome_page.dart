@@ -25,7 +25,7 @@ class WelcomePage extends StatelessWidget {
              DelayedAnimation(
                 delay: 500,
                 child: Container(
-                  height: 170,
+                  height: 100,
                   child: Image.asset('images/Bienvenue.png'),
                 ),
               ),
@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
               DelayedAnimation(
                 delay: 1000,
                 child: Container(
-                  height: 170,
+                  height: 130,
                   child: Image.asset('images/bookcab.png'),
                 ),
               ),

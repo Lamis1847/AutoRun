@@ -3,8 +3,8 @@ import 'package:AutoRun/main.dart';
 import 'package:AutoRun/delayed_animation.dart';
 import 'package:AutoRun/selfie_page.dart' as selfi;
 
-class TakeSelfie extends StatelessWidget {
-  const TakeSelfie({Key? key}) : super(key: key);
+class WaitingPage extends StatelessWidget {
+  const WaitingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +39,15 @@ class TakeSelfie extends StatelessWidget {
               DelayedAnimation(
                 delay: 500,
                 child: SizedBox(
-                  height: 50,
-                  child: Image.asset('images/Prendre un selfie.png'),
+                  height: 20,
+                  child: Image.asset('images/Bravo.png'),
                 ),
               ),
               const SizedBox(height: 25),
               const DelayedAnimation(
                 delay: 700,
                 child: Text(
-                  "Cliquer sur le bouton pour prendre un selfie",
+                  "Votre demande d’inscription est en attente de validation. Vous recevrez une notification une fois acceptée.",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontFamily: 'NexaXRegular',
@@ -61,7 +61,7 @@ class TakeSelfie extends StatelessWidget {
                 delay: 1000,
                 child: SizedBox(
                   height: 170,
-                  child: Image.asset('images/Groupe.png'),
+                  child: Image.asset('images/notif.png'),
                 ),
               ),
               const SizedBox(height: 70),
@@ -100,11 +100,11 @@ class TakeSelfie extends StatelessWidget {
                           children: const [
                             SizedBox(width: 10),
                             Text(
-                              "Prendre un selfie",
+                              "C'est compris",
                               style: TextStyle(
                                 fontFamily: 'NexaXRegular',
                                 color: Colors.white,
-                                fontSize: 22,
+                                fontSize: 20,
                               ),
                             )
                           ],

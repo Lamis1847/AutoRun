@@ -13,43 +13,40 @@ class LogoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: this.duration), () {
       Navigator.push(
-        context, MaterialPageRoute(builder: (context) => this.goToPage));
+          context, MaterialPageRoute(builder: (context) => this.goToPage));
     });
     return Scaffold(
       backgroundColor: Color(0xFFEDECF2),
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(
-            vertical: 60,
-            horizontal: 30,
-          ),
-        
-          child: Column(
-            children: [
-              Align(
-                  alignment: Alignment.center,),
-              SizedBox(height: 70),
-              DelayedAnimation(
-                delay: 1500,
-                child: Container(
-                  height: 230,
-                  child: SvgPicture.asset("images/AutoRun_logo.svg"),
-                ),
-              ),
-              
-              SizedBox(height: 130),
-              DelayedAnimation(
-                delay: 1500,
-                child: Container(
-                  height: 170,
-                  child: SvgPicture.asset("images/Logo_FUTURA.svg"),
-                ),
-              ),
-            ],
-          ),
-        )
+          child: Container(
+        margin: EdgeInsets.symmetric(
+          vertical: 60,
+          horizontal: 30,
         ),
-    
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.center,
+            ),
+            SizedBox(height: 10),
+            DelayedAnimation(
+              delay: 1500,
+              child: Container(
+                height: 230,
+                child: SvgPicture.asset("images/AutoRun_logo.svg"),
+              ),
+            ),
+            SizedBox(height: 150),
+            DelayedAnimation(
+              delay: 1500,
+              child: Container(
+                height: 150,
+                child: SvgPicture.asset("images/Logo_FUTURA.svg"),
+              ),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

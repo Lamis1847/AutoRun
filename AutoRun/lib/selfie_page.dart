@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:AutoRun/welcome_page.dart';
-
+import 'package:AutoRun/scan.dart';
 Future<Widget> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
@@ -12,7 +12,6 @@ Future<Widget> main() async {
   return TakePictureScreen(
     camera: firstCamera,
   );
-  
 }
 
 class TakePictureScreen extends StatefulWidget {
@@ -30,7 +29,7 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
-
+  int i = 0;
   @override
   void initState() {
     super.initState();
@@ -50,9 +49,9 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Prendre une photo'),
-      
-    ),
+      appBar: AppBar(
+        title: const Text('Prendre une photo'),
+      ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -82,7 +81,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         child: const Icon(Icons.camera_alt),
       ),
     );
-    
   }
 }
 
@@ -92,28 +90,21 @@ class DisplayPictureScreen extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-   
-   
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Afficher l'image"),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            color: Colors.white,
-            
-            onPressed: () {
-               Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WelcomePage(),
-                    ),
-                  );
-            },
-          ),
-          
-        ]
-      ),
+      appBar: AppBar(title: const Text("Afficher l'image"), actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.arrow_forward),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ScanPage(),
+              ),
+            );
+          },
+        ),
+      ]),
       body: Image.file(File(imagePath)),
     );
   }
