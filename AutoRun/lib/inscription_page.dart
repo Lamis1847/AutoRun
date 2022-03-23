@@ -6,6 +6,36 @@ import 'package:AutoRun/take_selfie.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:path/path.dart';
 
+class EmailFieldValidator {
+  static String? validate(String value) {
+    if (value.isEmpty ||
+        !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}').hasMatch(value))
+      return "Email can't be empty or invalid";
+    return null; 
+}
+  }
+  class NameFieldValidator {
+  static String? validate(String value) {
+    if (value.isEmpty ||
+        !RegExp(r'^[a-z A-Z]+$').hasMatch(value))
+      return "Name can't be empty or invalid";
+    return null; 
+}
+  }
+  class PasswordFieldValidator {
+  static String? validate(String value) {
+    if (value.isEmpty || value.length < 6 || value.length > 15)
+      return "Password can't be empty or invalid";
+    return null; 
+}
+  }
+  class PhoneFieldValidator {
+  static String? validate(String value) {
+    if (value.isEmpty ||  !RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value))
+      return "Phone number can't be empty or invalid";
+    return null; 
+}
+  }
 class InscriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

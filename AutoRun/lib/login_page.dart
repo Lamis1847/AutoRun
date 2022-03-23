@@ -4,14 +4,6 @@ import 'package:AutoRun/icons/icons.dart';
 import 'package:AutoRun/delayed_animation.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
-class EmailFieldValidator {
-  static String? validate(String value) {
-    if (value.isEmpty ||
-        !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}').hasMatch(value))
-      return "Email can't be empty";
-     return null; 
-}
-  }
  
 
 class LoginPage extends StatelessWidget {
