@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/logo_page.dart';
-import 'package:flutterapp/welcome_page.dart';
+import 'package:AutoRun/logo_page.dart';
+import 'package:AutoRun/welcome_page.dart';
 import 'package:flutter/src/widgets/navigator.dart';
 
 

@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/main.dart';
-import 'package:flutterapp/icons/icons.dart';
-import 'package:flutterapp/delayed_animation.dart';
+import 'package:AutoRun/main.dart';
+import 'package:AutoRun/icons/icons.dart';
+import 'package:AutoRun/delayed_animation.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+class EmailFieldValidator {
+  static String? validate(String value) {
+    if (value.isEmpty ||
+        !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}').hasMatch(value))
+      return "Email can't be empty";
+     return null; 
+}
+  }
+ 
 
 class LoginPage extends StatelessWidget {
   @override
@@ -58,7 +68,6 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 35),
             LoginForm(),
-            
           ],
         ),
       ),
@@ -82,7 +91,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: Column(
-          children:<Widget> [
+          children: <Widget>[
             DelayedAnimation(
               delay: 3500,
               child: TextFormField(
@@ -92,12 +101,12 @@ class _LoginFormState extends State<LoginForm> {
                     labelStyle: TextStyle(
                       color: Colors.grey[400],
                     ),
-                    hintText:
-                        'exemple mail abc@gmail.com'),
+                    hintText: 'exemple mail abc@gmail.com'),
                 validator: (value) {
                   if (value == null ||
                       value.isEmpty ||
-                      !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}').hasMatch(value)) {
+                      !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}')
+                          .hasMatch(value)) {
                     return '* Entrez un email valide';
                   }
                   return null;
@@ -129,7 +138,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   validator: MultiValidator([
                     RequiredValidator(errorText: "* Obligatoire"),
-                    ])),
+                  ])),
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -184,7 +193,6 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 onPressed: () {
-                  
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
                       context,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/inscription_page.dart';
-import 'package:flutterapp/main.dart';
-import 'package:flutterapp/delayed_animation.dart';
-import 'package:flutterapp/welcome_page.dart';
+import 'package:AutoRun/inscription_page.dart';
+import 'package:AutoRun/main.dart';
+import 'package:AutoRun/delayed_animation.dart';
+import 'package:AutoRun/welcome_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LogoPage extends StatelessWidget {

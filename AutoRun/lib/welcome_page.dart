@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/inscription_page.dart';
-import 'package:flutterapp/main.dart';
-import 'package:flutterapp/delayed_animation.dart';
-import 'package:flutterapp/login_page.dart';
+import 'package:AutoRun/inscription_page.dart';
+import 'package:AutoRun/main.dart';
+import 'package:AutoRun/delayed_animation.dart';
+import 'package:AutoRun/login_page.dart';
 
 
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/icons/icons.dart';
-import 'package:flutterapp/main.dart';
-import 'package:flutterapp/delayed_animation.dart';
-import 'package:flutterapp/take_selfie.dart';
+import 'package:AutoRun/icons/icons.dart';
+import 'package:AutoRun/main.dart';
+import 'package:AutoRun/delayed_animation.dart';
+import 'package:AutoRun/take_selfie.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:path/path.dart';
 

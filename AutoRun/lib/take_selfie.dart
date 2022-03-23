@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/main.dart';
-import 'package:flutterapp/delayed_animation.dart';
-import 'package:flutterapp/selfie_page.dart' as selfi;
+import 'package:AutoRun/main.dart';
+import 'package:AutoRun/delayed_animation.dart';
+import 'package:AutoRun/selfie_page.dart' as selfi;
 
 class TakeSelfie extends StatelessWidget {
   const TakeSelfie({Key? key}) : super(key: key);

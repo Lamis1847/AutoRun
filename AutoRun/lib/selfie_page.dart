@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/welcome_page.dart';
+import 'package:AutoRun/welcome_page.dart';
 
 Future<Widget> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +12,7 @@ Future<Widget> main() async {
   return TakePictureScreen(
     camera: firstCamera,
   );
+  
 }
 
 class TakePictureScreen extends StatefulWidget {
@@ -81,6 +82,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         child: const Icon(Icons.camera_alt),
       ),
     );
+    
   }
 }
 
