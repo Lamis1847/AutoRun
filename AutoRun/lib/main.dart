@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cars App',
       home: LogoPage(goToPage: WelcomePage(), duration: 5),
+      
     );
   }
 }

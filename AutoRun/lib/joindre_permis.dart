@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:AutoRun/delayed_animation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:AutoRun/Attente.dart';
-
+import 'package:AutoRun/main.dart';
 
 
 class GalleryPage extends StatefulWidget {
@@ -59,35 +59,46 @@ Uint8List? imageBytes;
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Spacer(flex:1,),
-            Container(
-            height:(MediaQuery.of(context).size.height)/2,
-                width:(MediaQuery.of(context).size.width)/2,
-            child:buildImage(),
-            ),
-      DelayedAnimation(
+              DelayedAnimation(
         delay: 6000,
             child:ElevatedButton(
 
 
                 onPressed: (){pickImage();},
 
-                style:ElevatedButton.styleFrom(primary:Color(0xFF4361EE),padding: const EdgeInsets.symmetric(horizontal: 45,vertical: 15),
-                    shape:new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(17.0))),
+                 style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    // <--- use this
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  primary: d_blue,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 12,
+                  ),
+                ),
 
 
-                child:const Text("Joindre une photo de galerie",
+                child:const Text("Joindre une photo de la galerie",
                     textAlign:TextAlign.center,
                     style:TextStyle(
-                      fontSize:19.0,
+                      fontSize:18,
 
-                      letterSpacing: 2.0,
                       color:Color(0xFFFFFFFF),
                       fontFamily: 'NexaBold',
 
                     )
                 )
             ),),
+          SizedBox(height: 10,),
+            Container(
+            height:(MediaQuery.of(context).size.height)/2,
+                width:(MediaQuery.of(context).size.width)/2,
+            child:buildImage(),
+            ),
+    
            SizedBox(height: 20,),
            DelayedAnimation(
         delay: 6000,
@@ -101,23 +112,31 @@ Uint8List? imageBytes;
                       ),
                     );},
 
-                style:ElevatedButton.styleFrom(primary:Color(0xFF4361EE),padding: const EdgeInsets.symmetric(horizontal: 45,vertical: 15),
-                    shape:new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(17.0))),
+                 style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    // <--- use this
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  primary: d_blue,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 70,
+                    vertical: 13,
+                  ),
+                ),
 
 
                 child:const Text("Terminer",
                     textAlign:TextAlign.center,
-                    style:TextStyle(
-                      fontSize:19.0,
-
-                      letterSpacing: 2.0,
-                      color:Color(0xFFFFFFFF),
-                      fontFamily: 'NexaBold',
-
-                    )
+                   style: TextStyle(
+                    fontFamily: 'NexaXRegular',
+                    color: Colors.white,
+                    fontSize: 22,
+                  ),
                 )
             ),),
-
+           SizedBox(height: 20,)
           ],
         ),
       ),
@@ -138,3 +157,16 @@ Widget buildImage() {
 }}
 
 
+class MyCircleClipper extends CustomClipper<Rect> {
+
+
+  @override
+  Rect getClip(Size size) {
+    return Rect.fromLTWH(0,0,100,200);
+  }
+
+  @override
+  bool shouldReclip(MyCircleClipper oldClipper) {
+    return false;
+  }
+}

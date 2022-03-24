@@ -5,6 +5,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:AutoRun/welcome_page.dart';
 import 'package:AutoRun/scan.dart';
+import 'package:AutoRun/main.dart';
+
 Future<Widget> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
@@ -29,13 +31,14 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
-  int i = 0;
+ 
   @override
   void initState() {
     super.initState();
     _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
+      
     );
     _initializeControllerFuture = _controller.initialize();
   }
@@ -51,6 +54,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prendre une photo'),
+        backgroundColor: d_blue,
       ),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -91,7 +95,7 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Afficher l'image"), actions: <Widget>[
+      appBar: AppBar(title: const Text("Afficher l'image"), backgroundColor: d_blue, actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.arrow_forward),
           color: Colors.white,
