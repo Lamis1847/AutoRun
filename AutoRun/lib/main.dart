@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:AutoRun/logo_page.dart';
-import 'package:AutoRun/welcome_page.dart';
+import 'logo_page.dart';
+import 'welcome_page.dart';
 import 'package:flutter/src/widgets/navigator.dart';
 
 
@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cars App',
       home: LogoPage(goToPage: WelcomePage(), duration: 5),
-      
     );
   }
 }

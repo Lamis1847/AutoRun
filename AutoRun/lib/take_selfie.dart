@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:AutoRun/main.dart';
-import 'package:AutoRun/delayed_animation.dart';
-import 'package:AutoRun/selfie_page.dart' as selfi;
+import 'main.dart';
+import 'delayed_animation.dart';
+import 'selfie_page.dart' as selfi;
 
 class TakeSelfie extends StatelessWidget {
   const TakeSelfie({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class TakeSelfie extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 40,
+            vertical: 30,
             horizontal: 30,
           ),
           child: Column(

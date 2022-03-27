@@ -1,41 +1,45 @@
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:AutoRun/icons/icons.dart';
-import 'package:AutoRun/main.dart';
-import 'package:AutoRun/delayed_animation.dart';
-import 'package:AutoRun/take_selfie.dart';
+import 'package:AutoRun/welcome_page.dart';
+import 'icons/icons.dart';
+import 'login_page.dart';
+import 'main.dart';
+import 'delayed_animation.dart';
+import 'take_selfie.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:path/path.dart';
+import 'dart:convert';
 
 class EmailFieldValidator {
   static String? validate(String value) {
     if (value.isEmpty ||
         !RegExp(r'^[\w-\,]+@([\w-]+\.)[\w-]{2,4}').hasMatch(value))
       return "Email can't be empty or invalid";
-    return null; 
-}
+    return null;
   }
-  class NameFieldValidator {
+}
+class NameFieldValidator {
   static String? validate(String value) {
     if (value.isEmpty ||
         !RegExp(r'^[a-z A-Z]+$').hasMatch(value))
       return "Name can't be empty or invalid";
-    return null; 
-}
+    return null;
   }
-  class PasswordFieldValidator {
+}
+class PasswordFieldValidator {
   static String? validate(String value) {
-    if (value.isEmpty || value.length < 6 || value.length > 15)
+    if (value.isEmpty || value.length < 8 || value.length > 15)
       return "Password can't be empty or invalid";
-    return null; 
-}
+    return null;
   }
-  class PhoneFieldValidator {
+}
+class PhoneFieldValidator {
   static String? validate(String value) {
     if (value.isEmpty ||  !RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value))
       return "Phone number can't be empty or invalid";
-    return null; 
-}
+    return null;
   }
+}
 class InscriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -106,6 +110,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  var nomController = TextEditingController();
+  var emailController = TextEditingController();
+  var prenomController = TextEditingController();
+  var mdpController = TextEditingController();
+  var phoneContoller = TextEditingController();
+  var confirmMdpController = TextEditingController();
   var _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   String? _nom = '';
@@ -125,6 +135,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: nomController,
                 decoration: InputDecoration(
                   labelText: 'Nom',
                   prefixIcon: Icon(ProjectIcons.user),
@@ -149,6 +161,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 1500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: prenomController,
                 decoration: InputDecoration(
                   labelText: 'Prénom',
                   prefixIcon: Icon(ProjectIcons.user),
@@ -173,6 +187,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 2500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   prefixIcon: Icon(ProjectIcons.envelope),
@@ -198,6 +214,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 3500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller:  phoneContoller,
                 decoration: InputDecoration(
                   labelText: 'N° téléphone',
                   prefixIcon: Icon(ProjectIcons.call_incoming),
@@ -222,6 +240,7 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 4500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: _password,
                 obscureText: _obscureText,
                 decoration: InputDecoration(
@@ -246,7 +265,7 @@ class _LoginFormState extends State<LoginForm> {
                   if (value == null || value.isEmpty) {
                     return '* Entrez un numero de téléphone valide';
                   }
-                  if (value.length < 6) {
+                  if (value.length < 8) {
                     return "Doit contenir au moins 6 characteres";
                   }
                   if (value.length > 15) {
@@ -261,6 +280,7 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 5500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: _Confirmpassword,
                 obscureText: _obscureText,
                 decoration: InputDecoration(
@@ -318,16 +338,11 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TakeSelfie(),
-                      ),
-                    );
-                  }
+                    signup(context);
+
                 },
               ),
             ),
@@ -336,4 +351,57 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
+  Future<void> signup(BuildContext context) async {
+
+    if (nomController.text.isNotEmpty && prenomController.text.isNotEmpty && emailController.text.isNotEmpty && phoneContoller.toString().isNotEmpty   && _password.text.isNotEmpty  ) {
+      var response = await http.post(
+          Uri.parse(
+              'https://wyerkn74ia.execute-api.eu-west-3.amazonaws.com/signup/locataire'),
+          headers: <String,String>{
+            'Content-Type':'application/json; charset=UTF-8',
+          },
+
+          body: jsonEncode(<String,String> {
+            "email": emailController.text,
+            "mdp": _password.text,
+            "prenom": prenomController.text,
+            "nom": nomController.text,
+
+            "num_tel": phoneContoller.text,
+            "adresse_locataire":"vhvvvhvhvhunnnnnnnnnn",
+            "photo":"vhvvvhvhvhunnnnnnnnnn",
+            "piece_identite":"vhvvvhvhvhunnnnnnnnnn"
+          }));
+
+
+
+
+      print('Response status: ${response.body}');
+      if (response.statusCode == 200) {
+        print("hello world");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) =>  TakeSelfie()));
+      } else {
+        if (response.statusCode == 401) {
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Details manquants")));
+        } else {
+          if (response.statusCode == 405) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("User Already exists")));
+          } else {
+            if (response.statusCode == 500) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text("Erreur Serveur")));
+            }
+          }
+        }
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("veuillez remplir les champs")));
+    }
+  }
+
 }

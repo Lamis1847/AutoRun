@@ -1,12 +1,16 @@
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:AutoRun/main.dart';
-import 'package:AutoRun/icons/icons.dart';
-import 'package:AutoRun/delayed_animation.dart';
+import 'package:AutoRun/welcome_page.dart';
+import '/main.dart';
+import 'icons/icons.dart';
+import 'delayed_animation.dart';
+import 'take_selfie.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'dart:convert';
 
- 
 
 class LoginPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +19,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(0),
         leading: IconButton(
           icon: Icon(
-           Icons.arrow_back,
+            Icons.arrow_back,
             color: Colors.black,
             size: 30,
           ),
@@ -68,12 +72,16 @@ class LoginPage extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
+
   const LoginForm({Key? key}) : super(key: key);
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
+  var emailsController = TextEditingController();
+
+  var passwordController = TextEditingController();
   var _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   @override
@@ -87,6 +95,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 3500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: emailsController,
                 decoration: InputDecoration(
                     labelText: 'Email',
                     prefixIcon: Icon(ProjectIcons.envelope),
@@ -109,6 +119,8 @@ class _LoginFormState extends State<LoginForm> {
             DelayedAnimation(
               delay: 4500,
               child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: passwordController,
                   obscureText: _obscureText,
                   decoration: InputDecoration(
                     labelStyle: TextStyle(
@@ -186,12 +198,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MyApp(),
-                      ),
-                    );
+                    login(context);
                   }
                 },
               ),
@@ -201,5 +208,47 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
     );
+  }
+  Future<void> login(BuildContext context) async {
+    if (emailsController.text.isNotEmpty &&  passwordController.text.isNotEmpty) {
+      var response = await http.post(
+          Uri.parse(
+              'https://wyerkn74ia.execute-api.eu-west-3.amazonaws.com/login/locataire'),
+          headers: <String,String>{
+          'Content-Type':'application/json; charset=UTF-8',
+          },
+
+          body: jsonEncode(<String,String> {
+
+
+            "email": emailsController.text,
+            "mdp": passwordController.text,
+
+          }));
+
+      print('Response status: ${response.body}');
+      if (response.statusCode == 200) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => WelcomePage()));
+      } else {
+        if (response.statusCode == 401) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Details manquants")));
+        } else {
+          if (response.statusCode == 404) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Not Found: compte enexistant")));
+          } else {
+            if (response.statusCode == 500) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text("Erreur Serveur")));
+            }
+          }
+        }
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("veuillez remplir les champs")));
+    }
   }
 }

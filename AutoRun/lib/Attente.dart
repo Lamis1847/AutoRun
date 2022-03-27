@@ -1,8 +1,8 @@
+import 'package:AutoRun/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'package:AutoRun/main.dart';
-import 'package:AutoRun/delayed_animation.dart';
-import 'package:AutoRun/selfie_page.dart' as selfi;
-
+import 'main.dart';
+import 'delayed_animation.dart';
+import 'selfie_page.dart 'as selfi;
 class WaitingPage extends StatelessWidget {
   const WaitingPage({Key? key}) : super(key: key);
 
@@ -27,19 +27,21 @@ class WaitingPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 40,
-            horizontal: 30,
+            vertical: 20,
+            horizontal: 25,
           ),
           child: Column(
             children: [
               const Align(
                 alignment: Alignment.centerLeft,
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 0),
               DelayedAnimation(
                 delay: 500,
+                
                 child: SizedBox(
-                  height: 20,
+                
+                  height: 80,
                   child: Image.asset('images/Bravo.png'),
                 ),
               ),
@@ -56,7 +58,7 @@ class WaitingPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               DelayedAnimation(
                 delay: 1000,
                 child: SizedBox(
@@ -64,7 +66,7 @@ class WaitingPage extends StatelessWidget {
                   child: Image.asset('images/notif.png'),
                 ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 40),
               DelayedAnimation(
                 delay: 1000,
                 child: Container(
@@ -81,7 +83,7 @@ class WaitingPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => pageCamera,
+                              builder: (context) => WelcomePage(),
                             ),
                           );
                         },

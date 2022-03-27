@@ -1,11 +1,12 @@
+import 'package:AutoRun/Inscription_page.dart';
 import 'package:test/test.dart';
-import 'package:AutoRun/inscription_page.dart';
+
 
 void main() {
   test('title', () {});
   test('Empty or invalid email returns String error', () {
-    var result = EmailFieldValidator.validate('Lamis@esi.com');
-    expect(result, null);
+    var result = EmailFieldValidator.validate('Lamisesi.com');
+    expect(result, "Email can't be empty or invalid");
   });
   test('Empty or invalid name returns String error', () {
     var res = NameFieldValidator.validate('Lam9s');

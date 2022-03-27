@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:AutoRun/inscription_page.dart';
-import 'package:AutoRun/main.dart';
-import 'package:AutoRun/delayed_animation.dart';
-import 'package:AutoRun/login_page.dart';
-
+import 'inscription_page.dart';
+import 'main.dart';
+import 'delayed_animation.dart';
+import 'login_page.dart';
 
 
 
 class WelcomePage extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

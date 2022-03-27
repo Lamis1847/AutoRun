@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:AutoRun/main.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:AutoRun/welcome_page.dart';
-import 'package:AutoRun/scan.dart';
-import 'package:AutoRun/main.dart';
+import 'package:AutoRun/joindre_permis.dart';
+import 'welcome_page.dart';
 
 Future<Widget> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,14 +31,13 @@ class TakePictureScreen extends StatefulWidget {
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
- 
+  int i = 0;
   @override
   void initState() {
     super.initState();
     _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
-      
     );
     _initializeControllerFuture = _controller.initialize();
   }
@@ -103,7 +102,7 @@ class DisplayPictureScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ScanPage(),
+                builder: (context) => MyHomePage(title: '',),
               ),
             );
           },
