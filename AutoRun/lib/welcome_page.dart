@@ -5,6 +5,7 @@ import 'delayed_animation.dart';
 import 'login_page.dart';
 import 'fin_page.dart';
 import 'menu_page.dart';
+import 'inside_car.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -106,7 +107,7 @@ class WelcomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => InsideCar(),
                           ),
                         );
                       },

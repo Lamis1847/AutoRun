@@ -6,7 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:AutoRun/joindre_permis.dart';
 import 'welcome_page.dart';
-
+//import 'package:http/http.dart'as http;
 Future<Widget> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
@@ -118,4 +118,5 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Image.file(File(imagePath)),
     );
   }
+   
 }
