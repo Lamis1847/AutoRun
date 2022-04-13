@@ -3,8 +3,8 @@ import 'inscription_page.dart';
 import 'main.dart';
 import 'delayed_animation.dart';
 import 'login_page.dart';
-
-
+import 'fin_page.dart';
+import 'menu_page.dart';
 
 class WelcomePage extends StatelessWidget {
   @override

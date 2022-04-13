@@ -6,6 +6,7 @@ import 'login_page.dart';
 import 'main.dart';
 import 'delayed_animation.dart';
 import 'take_selfie.dart';
+import 'selfie_page.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:path/path.dart';
 import 'dart:convert';
@@ -116,6 +117,8 @@ class _LoginFormState extends State<LoginForm> {
   var mdpController = TextEditingController();
   var phoneContoller = TextEditingController();
   var confirmMdpController = TextEditingController();
+  
+
   var _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   String? _nom = '';

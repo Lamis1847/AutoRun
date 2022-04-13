@@ -30,6 +30,8 @@ class TakePictureScreen extends StatefulWidget {
 
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
+
+  late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
   int i = 0;
   @override
@@ -94,20 +96,25 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Afficher l'image"), backgroundColor: d_blue, actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.arrow_forward),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => MyHomePage(title: '',),
-              ),
-            );
-          },
-        ),
-      ]),
+      appBar: AppBar(
+          title: const Text("Afficher l'image"),
+          backgroundColor: d_blue,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.arrow_forward),
+              color: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(
+                      title: '',
+                    ),
+                  ),
+                );
+              },
+            ),
+          ]),
       body: Image.file(File(imagePath)),
     );
   }

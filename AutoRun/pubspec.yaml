@@ -86,7 +86,9 @@ flutter:
     - family: ProjectIcons
       fonts:
         - asset: assets/ProjectIcons.ttf
-
+    - family: MenuIcons
+      fonts:
+        - asset: assets/MenuIcons.ttf 
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
