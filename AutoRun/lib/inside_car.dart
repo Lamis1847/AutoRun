@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'Location_service.dart';
 import 'package:geolocator/geolocator.dart';
+import 'icons/location_icon_icons.dart';
 
 
 
@@ -168,7 +169,7 @@ class _InsideCarState extends State<InsideCar> {
                             child: Container(
                              
                             margin: EdgeInsets.only(
-                                left: 40, top: 20, right: 20),
+                                left: 55, top: 20, right: 20),
                             child: Column(children: [
                                 SizedBox(
                                 height: 10,
@@ -179,39 +180,53 @@ class _InsideCarState extends State<InsideCar> {
                                         .spaceBetween,
                                 children: [
                                     Text("Localisation",
+                                    
                                         style: TextStyle(
                                             fontWeight:
                                                 FontWeight.bold,
                                             fontFamily: 'Nunito',
                                             fontSize: 15,
                                             color: Colors.black)),
-                                    Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .spaceAround,
                                     
-                                    ),
+                                    
                                    
                                 ],
                                 ),
-                                SizedBox(height: 5,),
-                                 TextFormField(
-               
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.edit_location),
-                                      border: new OutlineInputBorder(
-                                     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                                     borderSide: BorderSide(color: Color.fromARGB(255, 153, 153, 153), width: 0.0) //This is Ignored,
-                                    ),
-                                    hintText: "Av. Colonel Mellah Ali",
-                                         
-                                    
-                                  ),
-                                  
-                                  
-                                ),
                                 SizedBox(
-                                height: 15,
+                                height: 10,
+                                ),
+                                
+                                 Container(
+                                   
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color.fromARGB(255, 146, 146, 146)),
+                                        borderRadius:
+                                            BorderRadius.circular(
+                                                5)),
+                                    child: Container(
+                                    margin: EdgeInsets.all(15),
+                                    padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal:10.0),
+                                    child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .start,
+                                                children: [
+                                                  Icon(LocationIcon.marker_2,
+                                                      size: 15,//color: color,
+                                                      ),
+                                                  SizedBox(
+                                                  width: 5,
+                                                ),
+
+
+                                    
+                                   Text("Colonel Mellah Ali"),
+                                                ],
+                                    ),
+                                    )),
+                                SizedBox(
+                                height: 25,
                                 ),
                                  Row(
                                 mainAxisAlignment:
@@ -235,69 +250,37 @@ class _InsideCarState extends State<InsideCar> {
                                 ],
                                 ),
                                 SizedBox(height: 5,),
-                                TextFormField(
-               
-                                  decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.edit_location),
-                                      border: new OutlineInputBorder(
-                                     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                                     borderSide: BorderSide(color: Color.fromARGB(255, 153, 153, 153), width: 0.0) //This is Ignored,
-                                    ),
-                                    hintText: "Oued Smar, Algiers 16000",
-                                  ),
-                                  
-                                  
-                                ),
-                                
-                               /* Container(
+                                 Container(
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: Colors.black),
+                                            color: Color.fromARGB(255, 146, 146, 146)),
                                         borderRadius:
                                             BorderRadius.circular(
                                                 5)),
                                     child: Container(
-                                    margin: EdgeInsets.all(10),
-                                   
+                                    margin: EdgeInsets.all(15),
+                                    padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal:10.0),
+                                    child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .start,
+                                                children: [
+                                                  Icon(LocationIcon.marker_2,
+                                                      size: 15,//color: color,
+                                                      ),
+                                                  SizedBox(
+                                                  width: 5,
+                                                ),
+
+
+                                    Text("Oued Smar, Algiers"),
+                                    ],
+                                    ),
                                     )),
                                 SizedBox(
                                 height: 30,
                                 ),
-                                 Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment
-                                        .spaceBetween,
-                                children: [
-                                    Text("Depart",
-                                        style: TextStyle(
-                                            fontWeight:
-                                                FontWeight.bold,
-                                            fontFamily: 'Nunito',
-                                            fontSize: 15,
-                                            color: Colors.black)),
-                                    Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .spaceAround,
-                                    
-                                    ),
-                                   
-                                ],
-                                ),
-                                SizedBox(
-                                height: 10,
-                                ),
-                                 Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.black),
-                                        borderRadius:
-                                            BorderRadius.circular(
-                                                5)),
-                                    child: Container(
-                                    margin: EdgeInsets.all(10),
-                                   
-                                    )),*/
+                                
                                
                             ]),
                             ))),

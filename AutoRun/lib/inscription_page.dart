@@ -106,6 +106,7 @@ class InscriptionPage extends StatelessWidget {
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
+  
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -117,8 +118,8 @@ class _LoginFormState extends State<LoginForm> {
   var mdpController = TextEditingController();
   var phoneContoller = TextEditingController();
   var confirmMdpController = TextEditingController();
-  
 
+   
   var _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   String? _nom = '';
@@ -344,7 +345,12 @@ class _LoginFormState extends State<LoginForm> {
 
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    signup(context);
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TakeSelfie(),
+                            ),
+                          );
 
                 },
               ),
@@ -354,57 +360,6 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
-  Future<void> signup(BuildContext context) async {
-
-    if (nomController.text.isNotEmpty && prenomController.text.isNotEmpty && emailController.text.isNotEmpty && phoneContoller.toString().isNotEmpty   && _password.text.isNotEmpty  ) {
-      var response = await http.post(
-          Uri.parse(
-              'https://wyerkn74ia.execute-api.eu-west-3.amazonaws.com/signup/locataire'),
-          headers: <String,String>{
-            'Content-Type':'application/json; charset=UTF-8',
-          },
-
-          body: jsonEncode(<String,String> {
-            "email": emailController.text,
-            "mdp": _password.text,
-            "prenom": prenomController.text,
-            "nom": nomController.text,
-
-            "num_tel": phoneContoller.text,
-            "adresse_locataire":"vhvvvhvhvhunnnnnnnnnn",
-            "photo":"vhvvvhvhvhunnnnnnnnnn",
-            "piece_identite":"vhvvvhvhvhunnnnnnnnnn"
-          }));
-
-
-
-
-      print('Response status: ${response.body}');
-      if (response.statusCode == 200) {
-        print("hello world");
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) =>  TakeSelfie()));
-      } else {
-        if (response.statusCode == 401) {
-
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Details manquants")));
-        } else {
-          if (response.statusCode == 405) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("User Already exists")));
-          } else {
-            if (response.statusCode == 500) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text("Erreur Serveur")));
-            }
-          }
-        }
-      }
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("veuillez remplir les champs")));
-    }
-  }
+  
 
 }

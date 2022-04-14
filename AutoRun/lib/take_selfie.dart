@@ -3,8 +3,10 @@ import 'main.dart';
 import 'delayed_animation.dart';
 import 'selfie_page.dart' as selfi;
 
-class TakeSelfie extends StatelessWidget {
-  const TakeSelfie({Key? key}) : super(key: key);
+class TakeSelfie extends StatefulWidget {
+  TakeSelfie({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,5 +121,11 @@ class TakeSelfie extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }

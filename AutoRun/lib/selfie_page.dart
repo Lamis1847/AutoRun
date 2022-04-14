@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:AutoRun/main.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -118,5 +118,5 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Image.file(File(imagePath)),
     );
   }
-   
+  
 }
