@@ -47,4 +47,4 @@ build:apk:
     - flutter build apk --no-sound-null-safety
   artifacts:
     paths:
-     - flutter_app/build/app/outputs/flutter-apk/
+     - AutoRun/build/app/outputs/flutter-apk/
