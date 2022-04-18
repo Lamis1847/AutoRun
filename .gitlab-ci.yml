@@ -43,8 +43,8 @@ build:apk:
     - tar xf flutter.tar
     - export PATH="$PATH:`pwd`/flutter/bin"
   script:
-    - cd flutter_app
+    - cd AutoRun
     - flutter build apk --no-sound-null-safety
   artifacts:
     paths:
-     - flutter_app/build/app/outputs/flutter-apk/
+     - AutoRun/build/app/outputs/flutter-apk/
