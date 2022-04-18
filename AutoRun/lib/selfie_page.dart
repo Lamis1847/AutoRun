@@ -1,36 +1,54 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:AutoRun/main.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:AutoRun/joindre_permis.dart';
 import 'welcome_page.dart';
+
 //import 'package:http/http.dart'as http;
-Future<Widget> main() async {
+Future<Widget> Picture(nomController, prenomController, emailController,
+    mdpController, phoneContoller) async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
   final firstCamera = cameras[1];
+
   return TakePictureScreen(
     camera: firstCamera,
+    nomController: nomController,
+    prenomController: prenomController,
+    emailController: emailController,
+    phoneContoller: phoneContoller,
+    mdpController: mdpController,
   );
 }
 
 class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({
+  TakePictureScreen({
     Key? key,
     required this.camera,
+      required this.nomController,
+      required this.emailController,
+      required this.prenomController,
+      required this.phoneContoller,
+      required this.mdpController
   }) : super(key: key);
 
   final CameraDescription camera;
-
+  final nomController;
+  final emailController;
+  final prenomController;
+  final mdpController;
+  final phoneContoller;
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
 }
 
 class TakePictureScreenState extends State<TakePictureScreen> {
+  
   late CameraController _controller;
-
   late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
   int i = 0;
@@ -40,6 +58,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
+      
     );
     _initializeControllerFuture = _controller.initialize();
   }
@@ -76,6 +95,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
               MaterialPageRoute(
                 builder: (context) => DisplayPictureScreen(
                   imagePath: image.path,
+                  nomController: widget.nomController,
+                  prenomController: widget.prenomController,
+                  emailController: widget.emailController,
+                  phoneContoller: widget.phoneContoller,
+                  mdpController: widget.mdpController,
                 ),
               ),
             );
@@ -91,8 +115,20 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
-  const DisplayPictureScreen({Key? key, required this.imagePath})
+  DisplayPictureScreen(
+      {Key? key,
+      required this.imagePath,
+      required this.nomController,
+      required this.emailController,
+      required this.prenomController,
+      required this.phoneContoller,
+      required this.mdpController})
       : super(key: key);
+  final nomController;
+  final emailController;
+  final prenomController;
+  final mdpController;
+  final phoneContoller;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,6 +145,12 @@ class DisplayPictureScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MyHomePage(
                       title: '',
+                      nomController: nomController,
+                      prenomController: prenomController,
+                      emailController: emailController,
+                      phoneContoller: phoneContoller,
+                      mdpController: mdpController,
+                      imagePath: imagePath,
                     ),
                   ),
                 );
@@ -118,5 +160,4 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Image.file(File(imagePath)),
     );
   }
-  
 }

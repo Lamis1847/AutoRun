@@ -348,7 +348,8 @@ class _LoginFormState extends State<LoginForm> {
                     Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TakeSelfie(),
+                              builder: (context) => TakeSelfie(nomController: nomController.text,prenomController: prenomController.text,
+                              emailController: emailController.text, phoneContoller: phoneContoller.text, mdpController: mdpController.text,),
                             ),
                           );
 

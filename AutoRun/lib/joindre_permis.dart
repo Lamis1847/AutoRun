@@ -12,21 +12,20 @@ import 'package:flutter_svg/svg.dart';
 import 'selfie_page.dart';
 
 class MyHomePage extends StatefulWidget {
-   MyHomePage({Key? key, required this.title }) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  MyHomePage({Key? key, required this.title, required this.imagePath,
+      required this.nomController,
+      required this.emailController,
+      required this.prenomController,
+      required this.phoneContoller,
+      required this.mdpController}) : super(key: key);
 
   final String title;
-   
-
-  
+  final String imagePath;
+  final nomController;
+  final emailController;
+  final prenomController;
+  final mdpController;
+  final phoneContoller;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -35,18 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Uint8List? imageBytes;
   bool selecimage = false;
   bool selectext = true;
-  
-  /*var nomController = TextEditingController();
-  var emailController = TextEditingController();
-  var prenomController = TextEditingController();
-  var mdpController = TextEditingController();
-  var phoneContoller = TextEditingController();
-  var confirmMdpController = TextEditingController();
-  TextEditingController _password = TextEditingController();
-  TextEditingController _Confirmpassword = TextEditingController();*/
+
+
+  late String imagePath;
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         /*appBar: AppBar(
             elevation: 0,
@@ -62,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             )
           ),*/
-          
+
         body: Container(
             child: Padding(
       padding: const EdgeInsets.all(30.0),
@@ -124,10 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 pickImage();
                 selectext = false;
               } else {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const WaitingPage()),
-                );
+                signup(context);
               }
             },
             child: selectext
@@ -167,7 +156,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     )));
-   
   }
 
   Future pickImage() async {
@@ -191,14 +179,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
   }
-/*
+
   Future<void> signup(BuildContext context) async {
     
-    if (nomController.text.isNotEmpty &&
-        prenomController.text.isNotEmpty &&
-        emailController.text.isNotEmpty &&
-        mdpController.text.isNotEmpty &&
-        phoneContoller.text.isNotEmpty) {
+    if (widget.nomController.isNotEmpty &&
+        widget.prenomController.isNotEmpty &&
+        widget.emailController.isNotEmpty &&
+        widget.mdpController.isNotEmpty &&
+        widget.phoneContoller.isNotEmpty) {
       var response = await http.post(
           Uri.parse(
               'https://wyerkn74ia.execute-api.eu-west-3.amazonaws.com/signup/locataire'),
@@ -206,11 +194,11 @@ class _MyHomePageState extends State<MyHomePage> {
             'Content-Type': 'application/json; charset=UTF-8',
           },
           body: jsonEncode(<String, String>{
-            "email": emailController.text,
-            "mdp": mdpController.text,
-            "prenom": prenomController.text,
-            "nom": nomController.text,
-            "num_tel": phoneContoller.text,
+            "email": widget.emailController,
+            "mdp": widget.nomController,
+            "prenom": widget.prenomController,
+            "nom": widget.nomController,
+            "num_tel": widget.phoneContoller,
             "adresse_locataire": "vhvvvhvhvhunnnnnnnnnn",
             "photo": "vhvvvhvhvhunnnnnnnnnn",
             "piece_identite": "vhvvvhvhvhunnnnnnnnnn"
@@ -241,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("veuillez remplir les champs")));
     }
-  }*/
+  }
 }
 
 class MyCircleClipper extends CustomClipper<Rect> {

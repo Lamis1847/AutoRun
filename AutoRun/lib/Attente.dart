@@ -1,13 +1,21 @@
+import 'dart:ui';
+
 import 'package:AutoRun/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'delayed_animation.dart';
-import 'selfie_page.dart 'as selfi;
+import 'selfie_page.dart' as selfi;
+
 class WaitingPage extends StatelessWidget {
   const WaitingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+  var nomController = TextEditingController();
+  var emailController = TextEditingController();
+  var prenomController = TextEditingController();
+  var mdpController = TextEditingController();
+  var phoneContoller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -38,9 +46,7 @@ class WaitingPage extends StatelessWidget {
               const SizedBox(height: 0),
               DelayedAnimation(
                 delay: 500,
-                
                 child: SizedBox(
-                
                   height: 80,
                   child: Image.asset('images/Bravo.png'),
                 ),
@@ -79,7 +85,8 @@ class WaitingPage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () async {
                           // Fonction doit etre async
-                          Widget pageCamera = await selfi.main(); // attendez l'init
+                          Widget pageCamera =
+                              await selfi.Picture(nomController, prenomController, emailController, phoneContoller, mdpController); // attendez l'init
                           Navigator.push(
                             context,
                             MaterialPageRoute(

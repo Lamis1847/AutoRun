@@ -3,10 +3,23 @@ import 'main.dart';
 import 'delayed_animation.dart';
 import 'selfie_page.dart' as selfi;
 
-class TakeSelfie extends StatefulWidget {
-  TakeSelfie({
-    Key? key,
-  }) : super(key: key);
+class TakeSelfie extends StatelessWidget {
+  TakeSelfie(
+      {Key? key,
+      required this.nomController,
+      required this.emailController,
+      required this.prenomController,
+      required this.phoneContoller,
+      required this.mdpController})
+      : super(key: key);
+  final nomController;
+  final emailController;
+  final prenomController;
+  final mdpController;
+  final phoneContoller;
+  var asyncWidget; 
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +92,12 @@ class TakeSelfie extends StatefulWidget {
                       ElevatedButton(
                         onPressed: () async {
                           // Fonction doit etre async
-                          Widget pageCamera = await selfi.main(); // attendez l'init
+                          Widget pageCamera = await selfi.Picture(
+                              nomController,
+                              prenomController,
+                              emailController,
+                              phoneContoller,
+                              mdpController); // attendez l'init
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -121,11 +139,5 @@ class TakeSelfie extends StatefulWidget {
         ),
       ),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }
