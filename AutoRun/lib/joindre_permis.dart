@@ -13,19 +13,19 @@ import 'selfie_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title, required this.imagePath,
-      required this.nomController,
-      required this.emailController,
-      required this.prenomController,
-      required this.phoneContoller,
-      required this.mdpController}) : super(key: key);
+      required this.lastname,
+      required this.firstname,
+      required this.email,
+      required this.phone,
+      required this.mdp}) : super(key: key);
 
   final String title;
   final String imagePath;
-  final nomController;
-  final emailController;
-  final prenomController;
-  final mdpController;
-  final phoneContoller;
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -182,11 +182,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> signup(BuildContext context) async {
     
-    if (widget.nomController.isNotEmpty &&
-        widget.prenomController.isNotEmpty &&
-        widget.emailController.isNotEmpty &&
-        widget.mdpController.isNotEmpty &&
-        widget.phoneContoller.isNotEmpty) {
+    if (widget.lastname.isNotEmpty &&
+        widget.firstname.isNotEmpty &&
+        widget.email.isNotEmpty &&
+        widget.phone.isNotEmpty &&
+        widget.mdp.isNotEmpty) {
       var response = await http.post(
           Uri.parse(
               'https://wyerkn74ia.execute-api.eu-west-3.amazonaws.com/signup/locataire'),
@@ -194,11 +194,11 @@ class _MyHomePageState extends State<MyHomePage> {
             'Content-Type': 'application/json; charset=UTF-8',
           },
           body: jsonEncode(<String, String>{
-            "email": widget.emailController,
-            "mdp": widget.mdpController,
-            "prenom":  widget.prenomController,
-            "nom": widget.nomController,
-            "num_tel": widget.phoneContoller,
+            "email": widget.email,
+            "mdp": widget.mdp,
+            "prenom":  widget.firstname,
+            "nom": widget.lastname,
+            "num_tel": widget.phone,
             "adresse_locataire": "vhvvvhvhvhunnnnnnnnnn",
             "photo": "vhvvvhvhvhunnnnnnnnnn",
             "piece_identite": "vhvvvhvhvhunnnnnnnnnn"

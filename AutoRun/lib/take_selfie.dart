@@ -6,20 +6,19 @@ import 'selfie_page.dart' as selfi;
 class TakeSelfie extends StatelessWidget {
   TakeSelfie(
       {Key? key,
-      required this.nomController,
-      required this.emailController,
-      required this.prenomController,
-      required this.phoneContoller,
-      required this.mdpController})
+      required this.firstname,
+      required this.lastname,
+      required this.email,
+      required this.phone,
+      required this.mdp})
       : super(key: key);
-  final nomController;
-  final emailController;
-  final prenomController;
-  final mdpController;
-  final phoneContoller;
-  var asyncWidget; 
-  
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
 
+  var asyncWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -93,11 +92,11 @@ class TakeSelfie extends StatelessWidget {
                         onPressed: () async {
                           // Fonction doit etre async
                           Widget pageCamera = await selfi.Picture(
-                              nomController,
-                              prenomController,
-                              emailController,
-                              phoneContoller,
-                              mdpController); // attendez l'init
+                              lastname,
+                              firstname,
+                              email,
+                              phone,
+                              mdp); // attendez l'init
                           Navigator.push(
                             context,
                             MaterialPageRoute(

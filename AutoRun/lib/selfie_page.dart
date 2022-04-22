@@ -9,19 +9,19 @@ import 'package:AutoRun/joindre_permis.dart';
 import 'welcome_page.dart';
 
 //import 'package:http/http.dart'as http;
-Future<Widget> Picture(nomController, prenomController, emailController,
-    mdpController, phoneContoller) async {
+Future<Widget> Picture(lastname, firstname, email,
+    mdp, phone) async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
   final firstCamera = cameras[1];
 
   return TakePictureScreen(
     camera: firstCamera,
-    nomController: nomController,
-    prenomController: prenomController,
-    emailController: emailController,
-    phoneContoller: phoneContoller,
-    mdpController: mdpController,
+    lastname: lastname,
+    firstname: firstname,
+    email: email,
+    phone: phone,
+    mdp: mdp,
   );
 }
 
@@ -29,19 +29,19 @@ class TakePictureScreen extends StatefulWidget {
   TakePictureScreen({
     Key? key,
     required this.camera,
-      required this.nomController,
-      required this.emailController,
-      required this.prenomController,
-      required this.phoneContoller,
-      required this.mdpController
+      required this.lastname,
+      required this.firstname,
+      required this.email,
+      required this.phone,
+      required this.mdp
   }) : super(key: key);
 
   final CameraDescription camera;
-  final nomController;
-  final emailController;
-  final prenomController;
-  final mdpController;
-  final phoneContoller;
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
 }
@@ -50,6 +50,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   
   late CameraController _controller;
   late CameraController _cameraController;
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
   late Future<void> _initializeControllerFuture;
   int i = 0;
   @override
@@ -91,15 +96,17 @@ class TakePictureScreenState extends State<TakePictureScreen> {
           try {
             await _initializeControllerFuture;
             final image = await _controller.takePicture();
+            
             await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => DisplayPictureScreen(
                   imagePath: image.path,
-                  nomController: widget.nomController,
-                  prenomController: widget.prenomController,
-                  emailController: widget.emailController,
-                  phoneContoller: widget.phoneContoller,
-                  mdpController: widget.mdpController,
+                  lastname: lastname,
+                  firstname: firstname,
+                  email: email,
+                  phone: phone,
+                  mdp: mdp,
+              
                 ),
               ),
             );
@@ -118,17 +125,17 @@ class DisplayPictureScreen extends StatelessWidget {
   DisplayPictureScreen(
       {Key? key,
       required this.imagePath,
-      required this.nomController,
-      required this.emailController,
-      required this.prenomController,
-      required this.phoneContoller,
-      required this.mdpController})
+       required this.firstname,
+      required this.lastname,
+      required this.email,
+      required this.phone,
+      required this.mdp})
       : super(key: key);
-  final nomController;
-  final emailController;
-  final prenomController;
-  final mdpController;
-  final phoneContoller;
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,11 +152,11 @@ class DisplayPictureScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MyHomePage(
                       title: '',
-                      nomController: nomController,
-                      prenomController: prenomController,
-                      emailController: emailController,
-                      phoneContoller: phoneContoller,
-                      mdpController: mdpController,
+                      lastname: lastname,
+                      firstname:firstname,
+                      email: email,
+                      phone: phone,
+                      mdp: mdp,
                       imagePath: imagePath,
                     ),
                   ),

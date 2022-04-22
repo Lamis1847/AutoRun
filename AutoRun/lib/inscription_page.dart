@@ -19,14 +19,15 @@ class EmailFieldValidator {
     return null;
   }
 }
+
 class NameFieldValidator {
   static String? validate(String value) {
-    if (value.isEmpty ||
-        !RegExp(r'^[a-z A-Z]+$').hasMatch(value))
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value))
       return "Name can't be empty or invalid";
     return null;
   }
 }
+
 class PasswordFieldValidator {
   static String? validate(String value) {
     if (value.isEmpty || value.length < 8 || value.length > 15)
@@ -34,13 +35,15 @@ class PasswordFieldValidator {
     return null;
   }
 }
+
 class PhoneFieldValidator {
   static String? validate(String value) {
-    if (value.isEmpty ||  !RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value))
+    if (value.isEmpty || !RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value))
       return "Phone number can't be empty or invalid";
     return null;
   }
 }
+
 class InscriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -106,7 +109,7 @@ class InscriptionPage extends StatelessWidget {
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
-  
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -118,8 +121,12 @@ class _LoginFormState extends State<LoginForm> {
   var mdpController = TextEditingController();
   var phoneContoller = TextEditingController();
   var confirmMdpController = TextEditingController();
+  late String firstname;
+  late String lastname;
+  late String email;
+  late String phone;
+  late String mdp;
 
-   
   var _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   String? _nom = '';
@@ -159,6 +166,9 @@ class _LoginFormState extends State<LoginForm> {
                 onSaved: (String? nom) {
                   _nom = nom;
                 },
+                onChanged: (text) {
+                  lastname = text;
+                },
               ),
             ),
             SizedBox(height: 30),
@@ -184,6 +194,9 @@ class _LoginFormState extends State<LoginForm> {
                 },
                 onSaved: (String? prenom) {
                   _prenom = prenom;
+                },
+                onChanged: (text) {
+                  firstname = text;
                 },
               ),
             ),
@@ -212,6 +225,9 @@ class _LoginFormState extends State<LoginForm> {
                 onSaved: (String? email) {
                   _email = email;
                 },
+                onChanged: (text) {
+                  email = text;
+                },
               ),
             ),
             SizedBox(height: 30),
@@ -219,7 +235,7 @@ class _LoginFormState extends State<LoginForm> {
               delay: 3500,
               child: TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller:  phoneContoller,
+                controller: phoneContoller,
                 decoration: InputDecoration(
                   labelText: 'N° téléphone',
                   prefixIcon: Icon(ProjectIcons.call_incoming),
@@ -237,6 +253,9 @@ class _LoginFormState extends State<LoginForm> {
                 },
                 onSaved: (String? phone) {
                   _phone = phone;
+                },
+                onChanged: (text) {
+                  phone = text;
                 },
               ),
             ),
@@ -263,6 +282,7 @@ class _LoginFormState extends State<LoginForm> {
                         _obscureText = !_obscureText;
                       });
                     },
+                    
                   ),
                 ),
                 validator: (value) {
@@ -277,6 +297,9 @@ class _LoginFormState extends State<LoginForm> {
                   }
 
                   return null;
+                },
+                onChanged: (text) {
+                  mdp = text;
                 },
               ),
             ),
@@ -342,17 +365,20 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 onPressed: () {
-
-                    // If the form is valid, display a snackbar. In the real world,
-                    // you'd often call a server or save the information in a database.
-                    Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TakeSelfie(nomController: nomController.text,prenomController: prenomController.text,
-                              emailController: emailController.text, phoneContoller: phoneContoller.text, mdpController: mdpController.text,),
-                            ),
-                          );
-
+                  // If the form is valid, display a snackbar. In the real world,
+                  // you'd often call a server or save the information in a database.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TakeSelfie(
+                        lastname: lastname,
+                        firstname:firstname,
+                        email: email,
+                        phone: phone,
+                        mdp: mdp,
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
@@ -361,6 +387,4 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
-  
-
 }
