@@ -43,14 +43,16 @@ dependencies:
   path_provider: ^2.0.9
   path:
   video_player: ^2.3.0
-  flutter_svg: ^0.19.1
+  flutter_svg: 
   geolocator: ^8.2.0
+  image_picker: ^0.8.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons:
   test:
+  
 
 flutter_icons:
   android: "launcher_icon"

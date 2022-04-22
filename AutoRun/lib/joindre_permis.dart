@@ -195,8 +195,8 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           body: jsonEncode(<String, String>{
             "email": widget.emailController,
-            "mdp": widget.nomController,
-            "prenom": widget.prenomController,
+            "mdp": widget.mdpController,
+            "prenom":  widget.prenomController,
             "nom": widget.nomController,
             "num_tel": widget.phoneContoller,
             "adresse_locataire": "vhvvvhvhvhunnnnnnnnnn",
