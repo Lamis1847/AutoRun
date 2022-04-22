@@ -116,7 +116,7 @@ class FinalPage extends StatelessWidget {
                   children:[
                   Text("Audi R8", style:TextStyle(
                   fontSize: 20,
-                  color:Color(0xFF363f93),
+                  color:d_blue,
                   fontWeight: FontWeight.bold
                   ),
                   
@@ -125,136 +125,124 @@ class FinalPage extends StatelessWidget {
                   Text("Colonel Mellah ", style:TextStyle(
                   fontSize: 14,
                   color:Colors.grey,
-                  fontWeight: FontWeight.normal
+                  fontWeight: FontWeight.bold
                   )),
                   SizedBox(height: 5,),
                   Text("Oued Smar", style:TextStyle(
                   fontSize: 14,
                   color:Colors.grey,
-                  fontWeight: FontWeight.normal
+                  fontWeight: FontWeight.bold
                   
                   )),
                    SizedBox(height: 5,),
                   Text("2 heures 30 min", style:TextStyle(
                   fontSize: 14,
                   color:Colors.grey,
-                  fontWeight: FontWeight.normal
+                  fontWeight: FontWeight.bold
                   
                   )),
                    SizedBox(height: 5,),
-                  Text("5000 DA", style:TextStyle(
+                  Text("15 km", style:TextStyle(
                   fontSize: 14,
                   color:Colors.grey,
-                  fontWeight: FontWeight.normal
+                  fontWeight: FontWeight.bold
                   
                   ),
                   ),
                   ],
                   )
-                  )
-                  )
+                  )                  
+                  ),
+                
                   ],
                   )
                   ),
-              /*DelayedAnimation(
-                delay: 1000,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                 children: <Widget>[
+                  
                    Container(
                    margin: EdgeInsets.symmetric(
                    
-                    horizontal: 30,
-                    
-                  ),
-                     color: Colors.white,
-                     child: Text("Audi R8", textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'NexaBold',
-                        color: Colors.black,
-                        fontSize: 22,
-                      ),
-                     ),
-                     
-                                          
-                   ),
+                  horizontal: 15,),
+                  height: 250,
+                  child:Stack(
+                  children: [
+                  Positioned(
+                  top: 30,
+                  left: 20,
+                   child: Material(
                   
-                   Container(
-                      margin: EdgeInsets.symmetric(
+                    child: Container(
+                    height: 160.0,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      offset: const Offset(
+                        -10.0, 10.0
+                      ),
+                      blurRadius: 20.0,
+                      spreadRadius: 4.0,
+                    ),],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
                    
-                    horizontal: 30,
+                    ),
+                    ),
                   ),
-                     color: Colors.white,
-                      height: 50,
-                      child: Image.asset('images/Audi.png'),
-                      
-                   ),
                   
-                   Container(
-                      margin: EdgeInsets.symmetric(
-                   
-                    horizontal: 30,
                   ),
-                     color: Colors.white,
-                     child: Text("Av. Colonel Mellah Ali, Algiers 16000\n", textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'NexaBold',
-                        color: Colors.grey[600],
-                        fontSize: 13,
-                      ),
-                      ),
-                     
-                   ),
-                   Container(
-                      margin: EdgeInsets.symmetric(
-                   
-                    horizontal: 30,
+                  Positioned(
+                  top: 55,
+                  left:50,
+                  child: Container(
+                  height: 200,
+                  width: 160,
+                  child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                  Text("Reçu", style:TextStyle(
+                  fontSize: 20,
+                  color:d_blue,
+                  fontWeight: FontWeight.bold
                   ),
-                     color: Colors.white,
-                     child: Text("Oued Smar, Algiers 16000\n", textAlign: TextAlign.left,
-                     style: TextStyle(
-                        fontFamily: 'NexaBold',
-                        color: Colors.grey[600],
-                        fontSize: 13,
-                      ),
-                      ),
-                     
-                   ),
-                   Container(
-                      margin: EdgeInsets.symmetric(
-                   
-                    horizontal: 30,
+                  
                   ),
-                     color: Colors.white,
-                     child: Text("2 heures 30 minutes\n", textAlign: TextAlign.left,
-                     style: TextStyle(
-                        fontFamily: 'NexaBold',
-                        color: Colors.grey[600],
-                        fontSize: 13,
-                      ),
-                      ),
-                     
-                   ),
-                   Container(
-                      margin: EdgeInsets.symmetric(
-                   
-                    horizontal: 30,
+                   SizedBox(height: 5,),
+                  Text("Prix par heure 2000DA", style:TextStyle(
+                  fontSize: 14,
+                  color:Colors.grey,
+                  fontWeight: FontWeight.bold
+                  )),
+                  SizedBox(height: 5,),
+                  Text("Prix HT             5000DA", style:TextStyle(
+                  fontSize: 14,
+                  color:Colors.grey,
+                  fontWeight: FontWeight.bold
+                  
+                  )),
+                   SizedBox(height: 5,),
+                  Text("TVA(5%)           250DA", style:TextStyle(
+                  fontSize: 14,
+                  color:Colors.grey,
+                  fontWeight: FontWeight.bold
+                  
+                  )),
+                   SizedBox(height: 5,),
+                  Text("Prix TTC           5250DA", style:TextStyle(
+                  fontSize: 14,
+                  color:d_blue,
+                  fontWeight: FontWeight.bold
+                  
                   ),
-                     color: Colors.white,
-                     child: Text("5000 DA\n", textAlign: TextAlign.left,
-                     style: TextStyle(
-                        fontFamily: 'NexaBold', 
-                        color: Colors.grey[600],
-                        fontSize: 13,
-                      ),
-                      ),
-                     
-                   ),
-                 ],
-                ),
-              // ),*/
-             const SizedBox(height: 85),
+                  ),
+                  ],
+                  )
+                  )                  
+                  ),],
+                  )
+                  ),
+             
+             const SizedBox(height: 2),
               DelayedAnimation(
                 delay: 1000,
                 child: Container(
